@@ -1,0 +1,15 @@
+name: bjornt-prometheus-postgres-exporter
+version: 0.0.1
+summary: Prometheus Postgresql Exporter
+description: |
+  Exporter that exposes information gathered from Postgresql
+confinement: strict
+apps:
+  postgres-exporter:
+    command: 'bin/postgres_exporter'
+    plugs: [network-bind, network]
+parts:
+  postgres-exporter:
+    plugin: go
+    go-importpath: github.com/wrouesnel/postgres_exporter
+    source: .
